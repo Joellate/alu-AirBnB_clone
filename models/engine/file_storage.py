@@ -1,6 +1,8 @@
 #!/usr/bin/python3
+
 import json
 from models.base_model import BaseModel
+
 
 class FileStorage:
     """Serializes and deserializes instances to/from a JSON file."""
@@ -16,7 +18,10 @@ class FileStorage:
 
     def save(self):
         with open(FileStorage.__file_path, 'w') as f:
-            json.dump({k: v.to_dict() for k, v in FileStorage.__objects.items()}, f)
+            json.dump(
+                {k: v.to_dict() for k, v in FileStorage.__objects.items()},
+                f
+            )
 
     def reload(self):
         try:
